@@ -13,11 +13,11 @@ import lombok.RequiredArgsConstructor;
 @Controller
 public class QuestionController {
 
-	private final QuestionRepository questionRepository; 
-
+	private final QuestionService questionService; 
+	
 	@GetMapping("/question/list")
 	public String list(Model model){
-		List<Question> list = this.questionRepository.findAll();
+		List<Question> list = this.questionService.getList();
 		model.addAttribute("questionList", list);
 		return "question_list";
 		
