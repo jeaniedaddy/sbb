@@ -13,5 +13,11 @@ public class MainController {
 		return "index"; 
 		
 	}
+	
+	@GetMapping("/")
+	@ResponseBody
+	public String hello() {
+		return "<h1>Welcome to SBB</h1>"; 
+	}
 
 }
