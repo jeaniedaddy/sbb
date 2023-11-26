@@ -15,9 +15,8 @@ public class MainController {
 	}
 	
 	@GetMapping("/")
-	@ResponseBody
 	public String hello() {
-		return "<h1>Welcome to SBB</h1>"; 
+		return "redirect:/question/list";
 	}
 
 }
