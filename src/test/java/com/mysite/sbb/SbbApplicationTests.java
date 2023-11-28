@@ -31,11 +31,26 @@ class SbbApplicationTests {
 	@Test
 	@Transactional
 	void testJpa() {
-		Optional<Question> oq = this.questionRepository.findById(2);
-		assertTrue(oq.isPresent());
-		Question q = oq.get();
-		List<Answer> al = q.getAnswerList();
-		assertEquals(1,al.size());
+		Question q1 = new Question();
+        q1.setSubject("what is sbb");
+        q1.setContent("want to know sbb");
+        q1.setCreateDate(LocalDateTime.now());
+        this.questionRepository.save(q1);  
+
+        Question q2 = new Question();
+        q2.setSubject("what is spring model");
+        q2.setContent("is id auto generated?");
+        q2.setCreateDate(LocalDateTime.now());
+        this.questionRepository.save(q2);  
+        
+        Integer count = (int) this.questionRepository.count();
+        System.out.println(count);
+		
+//		Optional<Question> oq = this.questionRepository.findById(2);
+//		assertTrue(oq.isPresent());
+//		Question q = oq.get();
+//		List<Answer> al = q.getAnswerList();
+//		assertEquals(1,al.size());
 	}
 		
 //	@Test
