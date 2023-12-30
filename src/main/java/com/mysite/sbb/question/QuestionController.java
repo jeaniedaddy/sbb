@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mysite.sbb.answer.AnswerService;
+
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -17,6 +19,7 @@ import lombok.RequiredArgsConstructor;
 public class QuestionController {
 
 	private final QuestionService questionService; 
+	private final AnswerService answerService;
 	
 	@GetMapping("/list")
 	public String list(Model model){
