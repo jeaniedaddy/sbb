@@ -16,6 +16,7 @@ import com.mysite.sbb.answer.Answer;
 import com.mysite.sbb.answer.AnswerRepository;
 import com.mysite.sbb.question.Question;
 import com.mysite.sbb.question.QuestionRepository;
+import com.mysite.sbb.question.QuestionService;
 
 import jakarta.transaction.Transactional;
 
@@ -26,16 +27,24 @@ class SbbApplicationTests {
 	private QuestionRepository questionRepository;
 	
 	@Autowired
+	private QuestionService questionService;
+	
+	@Autowired
 	private AnswerRepository answerRepository; 
 	
 	@Test
-	@Transactional
 	void testJpa() {
-		Optional<Question> oq = this.questionRepository.findById(2);
-		assertTrue(oq.isPresent());
-		Question q = oq.get();
-		List<Answer> al = q.getAnswerList();
-		assertEquals(1,al.size());
+		for(int i = 0 ; i <300 ; i++) {
+			String subject = String.format("this is test data:[%03d]", i);
+			String content = "no content";
+			
+			this.questionService.create(subject, content);
+		}
+//		Optional<Question> oq = this.questionRepository.findById(2);
+//		assertTrue(oq.isPresent());
+//		Question q = oq.get();
+//		List<Answer> al = q.getAnswerList();
+//		assertEquals(1,al.size());
 	}
 		
 //	@Test
